@@ -1,0 +1,24 @@
+﻿html {
+    margin: auto;
+    width: 1170px;
+    min-width: 790px;
+}
+
+.app-title {
+    font-size: 30px;
+}
+
+.navbar {
+    margin-top: 10px;
+}
+
+.option-group {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.default-tb-size {
+    width: 770px;
+    height: 350px;
+    max-width: 1000px;
+}
