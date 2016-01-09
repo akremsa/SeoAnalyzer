@@ -128,6 +128,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AnalyzerController.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
+    <Compile Include="Core\Parsers\PlainTextParser.cs" />
+    <Compile Include="Core\Processor.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

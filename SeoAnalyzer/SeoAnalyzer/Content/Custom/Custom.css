@@ -22,3 +22,13 @@
     height: 350px;
     max-width: 1000px;
 }
+
+.text-table {
+    width: 450px;
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+.start-link {
+    float: right;
+}

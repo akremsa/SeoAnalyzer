@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SeoAnalyzer.Core;
 using SeoAnalyzer.Models;
 
 namespace SeoAnalyzer.Controllers
@@ -12,7 +13,7 @@ namespace SeoAnalyzer.Controllers
         [HttpGet]
         public ViewResult Home()
         {
-            return View(new AnalysisParameters() { AnalyzeText = true });
+            return View(new AnalysisParameters { AnalyzeText = true });
         }
 
         [HttpPost]
@@ -20,19 +21,12 @@ namespace SeoAnalyzer.Controllers
         {
             if (ModelState.IsValid)
             {
+                AnalysisResult result = new Processor().Process(parameters);
 
-
-                return RedirectToAction("Result");
+                return View("Result", result);
             }
 
             return View();
         }
-
-        
-        public ViewResult Result()
-        {
-            return View();
-        }
-
     }
 }

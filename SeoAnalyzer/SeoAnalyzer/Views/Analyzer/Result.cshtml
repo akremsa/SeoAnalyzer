@@ -1,6 +1,27 @@
-﻿@{
+﻿@model SeoAnalyzer.Models.AnalysisResult
+
+@{
     ViewBag.Title = "Result";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Result</h2>
+
+@Html.ActionLink("Start new analysis", "Home", "Analyzer", new { @class = "start-link"})
+
+<table class="table-striped text-table">
+    <thead>
+        <tr>
+            <th>Word</th>
+            <th>Count</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model.OccurrencesInText)
+    {
+        <tr>
+            <td>@item.Key</td>
+            <td>@item.Value</td>
+        </tr>
+    }
+</table>
+
