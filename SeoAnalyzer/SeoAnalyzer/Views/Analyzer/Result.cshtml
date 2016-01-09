@@ -5,23 +5,40 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Result</h2>
+@Html.ActionLink("Start new analysis", "Home", "Analyzer", null, new { @class = "start-link" })
 
-@Html.ActionLink("Start new analysis", "Home", "Analyzer", new { @class = "start-link"})
+@if (Model.OccurrencesInText.Count > 0)
+{
+    <h3 class="result-description">Occurences in text</h3>
 
-<table class="table-striped text-table">
-    <thead>
-        <tr>
-            <th>Word</th>
-            <th>Count</th>
-        </tr>
-    </thead>
-    @foreach (var item in Model.OccurrencesInText)
-    {
-        <tr>
-            <td>@item.Key</td>
-            <td>@item.Value</td>
-        </tr>
-    }
-</table>
+    <table class="table-striped table-custom" id="text-table">
+        <thead>
+            <tr>
+                <th>
+                    <label class="column-name">Word</label>
+                </th>
+                <th class='sort-default'>
+                    <label class="column-name">Count</label>
+                </th>
+            </tr>
+        </thead>
+        @foreach (var item in Model.OccurrencesInText)
+        {
+            <tr>
+                <td>@item.Key</td>
+                <td>@item.Value</td>
+            </tr>
+        }
+    </table>
+}
+
+
+
+<script type="text/javascript">
+    $(function () {
+        new Tablesort(document.getElementById('text-table'), {
+            descending: true
+        });
+    });
+</script>
 

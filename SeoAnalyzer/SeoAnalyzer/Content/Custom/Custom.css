@@ -23,7 +23,7 @@
     max-width: 1000px;
 }
 
-.text-table {
+.table-custom {
     width: 450px;
     font-size: 14px;
     margin-top: 15px;
@@ -31,4 +31,13 @@
 
 .start-link {
     float: right;
+}
+
+.column-name {
+     cursor: pointer; 
+     font-size: 17px;
+}
+
+.result-description {
+    color: #DF691A;
 }
