@@ -3,7 +3,7 @@ namespace SeoAnalyzer.Models
 {
     public class AnalysisParameters
     {
-        public string Text { get; set; }
+        public string Content { get; set; }
 
         public bool IsUrl { get; set; }
 

@@ -5,6 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<script src="~/Scripts/tablesort.number.js"></script>
+
 @Html.ActionLink("Start new analysis", "Home", "Analyzer", null, new { @class = "start-link" })
 
 @if (Model.OccurrencesInText.Count > 0)

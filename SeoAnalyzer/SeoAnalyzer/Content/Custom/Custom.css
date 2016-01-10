@@ -34,10 +34,14 @@
 }
 
 .column-name {
-     cursor: pointer; 
-     font-size: 17px;
+    cursor: pointer;
+    font-size: 17px;
 }
 
 .result-description {
     color: #DF691A;
+}
+
+.start-link {
+    margin-top: 70px;
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using SeoAnalyzer.Core;
 using SeoAnalyzer.Models;
 
@@ -21,7 +17,7 @@ namespace SeoAnalyzer.Controllers
         {
             if (ModelState.IsValid)
             {
-                AnalysisResult result = new Processor().Process(parameters);
+                AnalysisResult result = new ContentProcessor().Process(parameters);
 
                 return View("Result", result);
             }
