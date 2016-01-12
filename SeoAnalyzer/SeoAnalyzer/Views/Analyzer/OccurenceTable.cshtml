@@ -1,0 +1,22 @@
+﻿@model Dictionary<string, int>
+
+<table class="table-striped table-custom occurence-table">
+    <thead>
+        <tr>
+            <th>
+                <label class="column-name">Word</label>
+            </th>
+            <th class='sort-default'>
+                <label class="column-name">Count</label>
+            </th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Key</td>
+            <td>@item.Value</td>
+        </tr>
+    }
+</table>
+

@@ -9,7 +9,7 @@ namespace SeoAnalyzer.Controllers
         [HttpGet]
         public ViewResult Home()
         {
-            return View(new AnalysisParameters { AnalyzeText = true });
+            return View();
         }
 
         [HttpPost]

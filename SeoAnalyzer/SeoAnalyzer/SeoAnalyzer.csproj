@@ -131,7 +131,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AnalyzerController.cs" />
-    <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Core\ContentParser.cs" />
     <Compile Include="Core\ContentProcessor.cs" />
     <Compile Include="Global.asax.cs">
@@ -244,9 +243,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Settings\AnalyzerSettings.cshtml" />
     <Content Include="Views\Analyzer\Home.cshtml" />
     <Content Include="Views\Analyzer\Result.cshtml" />
+    <Content Include="Views\Analyzer\OccurenceTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

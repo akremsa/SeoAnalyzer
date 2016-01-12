@@ -9,11 +9,13 @@ namespace SeoAnalyzer.Core
     public class ContentParser
     {
         //hardcoded in order to keep application simple
-        private string[] _stopWords = { "of", "and", "the", "a", "at", "or", "for", "on", "to" };
+        private string[] _stopWords = { "of", "and", "the", "a", "at", "or", "for", "on", "to", "in" };
 
-        private const string REGEX_PATTERN = @"[^\W\d](\w|[-`]{1}(?=\w))*";
+        private const string REGEX_PATTERN = @"[^\W\d](\w|[-`]{1}(?=\w))+";
 
-        private const string XPATH_EXPR = "//text()[normalize-space(.)]";
+        private const string TEXT_XPATH_ = "//text()[normalize-space(.)]";
+
+        private const string META_XPATH = "//meta[@name='description']";
 
         public List<string> ParseText(string text)
         {
@@ -25,23 +27,33 @@ namespace SeoAnalyzer.Core
                 .ToList();
         }
 
-        public string GetTextFromHtml(string url)
+        public string GetTextFromHtml(HtmlDocument doc)
         {
             StringBuilder result = new StringBuilder();
-
-            HtmlDocument doc = new HtmlWeb().Load(url);
 
             doc.DocumentNode.Descendants()
                 .Where(node => node.Name == "script" || node.Name == "style")
                 .ToList()
                 .ForEach(item => item.Remove());
 
-            foreach (HtmlNode node in doc.DocumentNode.SelectNodes(XPATH_EXPR))
+            foreach (HtmlNode node in doc.DocumentNode.SelectNodes(TEXT_XPATH_))
             {
                 result.Append(node.InnerText.Trim()).Append(" ");
             }
 
             return result.ToString();
+        }
+
+        public string GetTextFromMetaTags(HtmlDocument doc)
+        {
+            HtmlNode node = doc.DocumentNode.SelectSingleNode(META_XPATH);
+
+            if (node != null)
+            {
+               return node.Attributes["content"].Value;
+            }
+
+            return string.Empty;
         }
     }
 }

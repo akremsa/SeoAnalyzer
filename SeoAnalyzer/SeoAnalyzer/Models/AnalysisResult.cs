@@ -4,9 +4,9 @@ namespace SeoAnalyzer.Models
 {
     public class AnalysisResult
     {
-        public Dictionary<string, int> OccurrencesInText { get; set; }
+        public Dictionary<string, int> TextAnalysis { get; set; }
 
-        public Dictionary<string, int> OccurrencesInMetaTags { get; set; }
+        public Dictionary<string, int> MetaTagsAnalysis { get; set; }
 
         public int ExternalLinksCount { get; set; }
     }

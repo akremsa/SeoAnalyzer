@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using HtmlAgilityPack;
+using Microsoft.Ajax.Utilities;
 using SeoAnalyzer.Models;
 
 namespace SeoAnalyzer.Core
@@ -19,10 +22,21 @@ namespace SeoAnalyzer.Core
 
             if (parameters.IsUrl)
             {
-                parameters.Content = _contentParser.GetTextFromHtml(parameters.Content);
+                HtmlDocument doc = new HtmlWeb().Load(parameters.Content);
+                parameters.Content = _contentParser.GetTextFromHtml(doc);
+
+                if (parameters.AnalyzeMetaTags)
+                {
+                    string metaTagsText = _contentParser.GetTextFromMetaTags(doc);
+
+                    if (!String.IsNullOrEmpty(metaTagsText))
+                    {
+                        result.MetaTagsAnalysis = CalculateNumberOfOccurences(_contentParser.ParseText(metaTagsText));
+                    }
+                }
             }
 
-            result.OccurrencesInText = CalculateNumberOfOccurences(_contentParser.ParseText(parameters.Content));
+            result.TextAnalysis = CalculateNumberOfOccurences(_contentParser.ParseText(parameters.Content));
             
             return result;
         }

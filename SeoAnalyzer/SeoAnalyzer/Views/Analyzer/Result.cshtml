@@ -9,38 +9,31 @@
 
 @Html.ActionLink("Start new analysis", "Home", "Analyzer", null, new { @class = "start-link" })
 
-@if (Model.OccurrencesInText.Count > 0)
+@if (Model.TextAnalysis.Any())
 {
-    <h3 class="result-description">Occurences in text</h3>
-
-    <table class="table-striped table-custom" id="text-table">
-        <thead>
-            <tr>
-                <th>
-                    <label class="column-name">Word</label>
-                </th>
-                <th class='sort-default'>
-                    <label class="column-name">Count</label>
-                </th>
-            </tr>
-        </thead>
-        @foreach (var item in Model.OccurrencesInText)
-        {
-            <tr>
-                <td>@item.Key</td>
-                <td>@item.Value</td>
-            </tr>
-        }
-    </table>
+    <h3 class="result-description">Text analysis</h3>
+  
+    Html.RenderPartial("OccurenceTable", Model.TextAnalysis); 
 }
 
+@if (Model.MetaTagsAnalysis.Any())
+{
+    <h3 class="result-description">Meta Tags analysis</h3>
+
+    Html.RenderPartial("OccurenceTable", Model.MetaTagsAnalysis);
+}
 
 
 <script type="text/javascript">
     $(function () {
-        new Tablesort(document.getElementById('text-table'), {
-            descending: true
-        });
+
+        var tablesForSorting = $('.occurence-table');
+
+        for (var i = 0; i < tablesForSorting.length; i++) {
+            new Tablesort(tablesForSorting[i], { descending: true });
+        }
+
     });
 </script>
+
 
