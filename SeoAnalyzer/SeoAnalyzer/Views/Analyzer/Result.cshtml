@@ -9,18 +9,24 @@
 
 @Html.ActionLink("Start new analysis", "Home", "Analyzer", null, new { @class = "start-link" })
 
-@if (Model.TextAnalysis.Any())
+@if (Model.TextAnalysis != null && Model.TextAnalysis.Any())
 {
     <h3 class="result-description">Text analysis</h3>
   
     Html.RenderPartial("OccurenceTable", Model.TextAnalysis); 
 }
 
-@if (Model.MetaTagsAnalysis.Any())
+@if (Model.MetaTagsAnalysis != null && Model.MetaTagsAnalysis.Any())
 {
     <h3 class="result-description">Meta Tags analysis</h3>
 
     Html.RenderPartial("OccurenceTable", Model.MetaTagsAnalysis);
+}
+
+@if (Model.ExternalLinksCount > 0)
+{
+    <h3 class="result-description">External links:</h3>
+    <h5>@Model.ExternalLinksCount</h5>
 }
 
 
@@ -32,7 +38,6 @@
         for (var i = 0; i < tablesForSorting.length; i++) {
             new Tablesort(tablesForSorting[i], { descending: true });
         }
-
     });
 </script>
 

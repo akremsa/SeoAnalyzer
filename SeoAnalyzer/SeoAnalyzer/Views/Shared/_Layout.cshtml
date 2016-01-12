@@ -7,17 +7,15 @@
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/bootstrapCss")
     @Styles.Render("~/Content/Custom/Custom.css")
+    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/tablesort")
+    @Scripts.Render("~/bundles/jqueryval")
 </head>
 <body>
-
     <b class="app-title">SEO Analyzer</b>
 
     @RenderBody()
-
-    @Scripts.Render("~/bundles/jquery")
-    @RenderSection("scripts", required: false)
 </body>
 </html>

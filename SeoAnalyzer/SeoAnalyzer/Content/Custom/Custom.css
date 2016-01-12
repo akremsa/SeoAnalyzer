@@ -4,6 +4,10 @@
     min-width: 790px;
 }
 
+body {
+    padding-bottom: 30px;
+}
+
 .app-title {
     font-size: 30px;
 }
@@ -44,4 +48,8 @@
 
 .start-link {
     margin-top: 70px;
+}
+
+.field-validation-error {
+    display: block;
 }

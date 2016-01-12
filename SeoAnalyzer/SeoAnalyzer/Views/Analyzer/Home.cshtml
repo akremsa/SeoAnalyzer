@@ -1,19 +1,20 @@
 ﻿@model SeoAnalyzer.Models.AnalysisParameters
 
 @{
-    ViewBag.Title = "Home";
+    ViewBag.Title = "SEO analyzer";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Home</h2>
 @using (Html.BeginForm())
 {
+    @Html.ValidationSummary(true)
     <div class="option-group">
         <label>Use URL:</label>
         @Html.CheckBoxFor(x => x.IsUrl, new { @class = "is-url" })
     </div>
 
-    <div class="option-group">
+    <div class="option-group count-external-links">
         <label title="Calculate number of external links">Count external links:</label>
         @Html.CheckBoxFor(x => x.CountExternalLinks)
     </div>
@@ -25,6 +26,7 @@
 
     <div class="form-group">
         @Html.TextAreaFor(x => x.Content, new { @class = "default-tb-size"})
+        @Html.ValidationMessageFor(x => x.Content)
     </div>
 
     <input class="btn btn-primary" type="submit" value="Run" />
@@ -36,15 +38,17 @@
         $('.is-url').change(function () {
             if (this.checked) {
                 $('.analyze-metatags').fadeIn();
+                $('.count-external-links').fadeIn();
             } else {
                 $('.analyze-metatags').fadeOut();
+                $('.count-external-links').fadeOut();
             }
         });
 
-        if (!$('.is-url').checked) {
+        if (!$('.is-url').prop('checked')) {
             $('.analyze-metatags').hide();
+            $('.count-external-links').hide();
         }
-
     });
 </script>
 
