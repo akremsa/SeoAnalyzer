@@ -53,3 +53,7 @@ body {
 .field-validation-error {
     display: block;
 }
+
+.header-description {
+    color: burlywood;
+}

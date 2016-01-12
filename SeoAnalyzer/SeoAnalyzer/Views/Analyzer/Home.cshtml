@@ -5,7 +5,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Home</h2>
+<h3 class="header-description">
+    This application performs a simple SEO analyzis of the text.
+    It calculates number of ocurences of each word and also can analyze meta tags and count external links in the text.
+    To get started - copy a text in the text area below or insert a URL.
+</h3>
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
