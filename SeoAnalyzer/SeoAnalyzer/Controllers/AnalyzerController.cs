@@ -41,6 +41,11 @@ namespace SeoAnalyzer.Controllers
                 {
                     ModelState.AddModelError("Content", "Please, insert a correct URI");
                 }
+
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("Content", ex.Message);
+                }
             }
 
             return View();
