@@ -14,18 +14,18 @@
 {
     @Html.ValidationSummary(true)
     <div class="option-group">
-        <label>Use URL:</label>
+        <label for="IsUrl">Use URL:</label>
         @Html.CheckBoxFor(x => x.IsUrl, new { @class = "is-url" })
     </div>
 
     <div class="option-group count-external-links">
         <label title="Calculate number of external links">Count external links:</label>
-        @Html.CheckBoxFor(x => x.CountExternalLinks)
+        @Html.CheckBoxFor(x => x.IsCountExternalLinks)
     </div>
 
     <div class="option-group analyze-metatags">
         <label title="Calculate number of uccurences on the page of each word listed in meta tags">Analyze meta tags:</label>
-        @Html.CheckBoxFor(x => x.AnalyzeMetaTags)
+        @Html.CheckBoxFor(x => x.IsAnalyzeMetaTags)
     </div>
 
     <div class="form-group">
@@ -53,6 +53,7 @@
             $('.analyze-metatags').hide();
             $('.count-external-links').hide();
         }
+
     });
 </script>
 

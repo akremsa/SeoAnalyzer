@@ -33,10 +33,10 @@
 <script type="text/javascript">
     $(function () {
 
-        var tablesForSorting = $('.occurence-table');
+        var $tablesForSorting = $('.occurence-table');
 
-        for (var i = 0; i < tablesForSorting.length; i++) {
-            new Tablesort(tablesForSorting[i], { descending: true });
+        for (var i = 0; i < $tablesForSorting.length; i++) {
+            new Tablesort($tablesForSorting[i], { descending: true });
         }
     });
 </script>

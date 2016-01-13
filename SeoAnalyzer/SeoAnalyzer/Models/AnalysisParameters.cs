@@ -9,8 +9,8 @@ namespace SeoAnalyzer.Models
 
         public bool IsUrl { get; set; }
 
-        public bool AnalyzeMetaTags { get; set; }
+        public bool IsAnalyzeMetaTags { get; set; }
 
-        public bool CountExternalLinks { get; set; }
+        public bool IsCountExternalLinks { get; set; }
     }
 }

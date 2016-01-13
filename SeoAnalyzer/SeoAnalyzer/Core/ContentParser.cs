@@ -9,11 +9,11 @@ namespace SeoAnalyzer.Core
     public class ContentParser
     {
         //hardcoded in order to keep application simple
-        private string[] _stopWords = { "is", "of", "and", "the", "a", "at", "or", "for", "on", "to", "in" };
+        private string[] _stopWords = { "is", "of", "and", "the", "a", "at", "or", "for", "on", "to", "in", "nbsp" };
 
         private const string REGEX_PATTERN = @"[^\W\d](\w|[-`]{1}(?=\w))+";
 
-        private const string TEXT_XPATH_ = "//text()[normalize-space(.)]";
+        private const string TEXT_XPATH = "//text()[normalize-space(.)]";
 
         private const string META_XPATH = "//meta[@name='description']";
 
@@ -33,14 +33,17 @@ namespace SeoAnalyzer.Core
         {
             StringBuilder result = new StringBuilder();
 
-            doc.DocumentNode.Descendants()
-                .Where(node => node.Name == "script" || node.Name == "style")
-                .ToList()
-                .ForEach(item => item.Remove());
-
-            foreach (HtmlNode node in doc.DocumentNode.SelectNodes(TEXT_XPATH_))
+            if (doc.DocumentNode != null)
             {
-                result.Append(node.InnerText.Trim()).Append(" ");
+                doc.DocumentNode.Descendants()
+                    .Where(node => node.Name == "script" || node.Name == "style")
+                    .ToList()
+                    .ForEach(item => item.Remove());
+
+                foreach (HtmlNode node in doc.DocumentNode.SelectNodes(TEXT_XPATH))
+                {
+                    result.Append(node.InnerText.Trim()).Append(" ");
+                }
             }
 
             return result.ToString();
@@ -52,7 +55,7 @@ namespace SeoAnalyzer.Core
 
             if (node != null)
             {
-               return node.Attributes["content"].Value;
+                return node.Attributes["content"].Value;
             }
 
             return string.Empty;

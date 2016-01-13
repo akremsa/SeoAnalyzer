@@ -21,9 +21,7 @@ namespace SeoAnalyzer.Controllers
             {
                 try
                 {
-                    AnalysisResult result = new ContentProcessor().Process(parameters);
-
-                    return View("Result", result);
+                    return View("Result", new ContentProcessor().Process(parameters));
                 }
                 catch (WebException ex)
                 {
@@ -39,7 +37,7 @@ namespace SeoAnalyzer.Controllers
                     }
                 }
 
-                catch (UriFormatException ex)
+                catch (UriFormatException)
                 {
                     ModelState.AddModelError("Content", "Please, insert a correct URI");
                 }

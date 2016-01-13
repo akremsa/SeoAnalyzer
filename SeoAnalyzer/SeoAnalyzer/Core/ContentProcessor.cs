@@ -9,7 +9,7 @@ namespace SeoAnalyzer.Core
 {
     public class ContentProcessor
     {
-        private ContentParser _contentParser;
+        private readonly ContentParser _contentParser;
 
         public ContentProcessor()
         {
@@ -28,7 +28,7 @@ namespace SeoAnalyzer.Core
 
                 textForAnalysis = _contentParser.GetTextFromHtml(doc);
 
-                if (parameters.AnalyzeMetaTags)
+                if (parameters.IsAnalyzeMetaTags)
                 {
                     string metaTagsText = _contentParser.GetTextFromMetaTags(doc);
 
@@ -38,7 +38,7 @@ namespace SeoAnalyzer.Core
                     }
                 }
 
-                if (parameters.CountExternalLinks)
+                if (parameters.IsCountExternalLinks)
                 {
                     result.ExternalLinksCount = _contentParser.CountExternalLinks(doc, new Uri(parameters.Content).Host);
                 }
@@ -49,9 +49,9 @@ namespace SeoAnalyzer.Core
             return result;
         }
 
-        private Dictionary<string, int> CalculateNumberOfOccurences(List<string> text)
+        private Dictionary<string, int> CalculateNumberOfOccurences(List<string> wordsList)
         {
-            return text.GroupBy(c => c)
+            return wordsList.GroupBy(c => c)
                 .ToDictionary(g => g.Key, g => g.Count());
         }
     }
