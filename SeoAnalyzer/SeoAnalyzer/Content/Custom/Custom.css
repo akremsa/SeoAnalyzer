@@ -35,6 +35,7 @@ body {
 
 .start-link {
     float: right;
+    margin-top: 70px;
 }
 
 .column-name {
@@ -46,10 +47,6 @@ body {
     color: #DF691A;
 }
 
-.start-link {
-    margin-top: 70px;
-}
-
 .field-validation-error {
     display: block;
 }
@@ -57,3 +54,4 @@ body {
 .header-description {
     color: burlywood;
 }
+

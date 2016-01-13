@@ -7,7 +7,7 @@
 
 <h4 class="header-description">
     This application performs a simple SEO analyzis of the text.
-    It calculates number of ocurences of each word and also can analyze meta tags and count external links in the text.
+    It calculates a number of ocurences of each word and also can analyze meta tags (searches for meta element with name="description") and count external links in the text.
     To get started - copy a text in the text area below or insert a URL.
 </h4>
 @using (Html.BeginForm())
@@ -41,18 +41,16 @@
     $(function () {
         $('.is-url').change(function () {
             if (this.checked) {
-                $('.analyze-metatags').fadeIn();
-                $('.count-external-links').fadeIn();
+                $('.analyze-metatags').fadeIn().css("display", "inline-block");
+                $('.count-external-links').fadeIn().css("display", "inline-block");
+
             } else {
                 $('.analyze-metatags').fadeOut();
                 $('.count-external-links').fadeOut();
             }
         });
 
-        if (!$('.is-url').prop('checked')) {
-            $('.analyze-metatags').hide();
-            $('.count-external-links').hide();
-        }
+        $('.is-url').trigger('change');
 
     });
 </script>
